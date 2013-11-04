@@ -1,0 +1,208 @@
+# End Week 1 Reflection
+
+<div class="gist"> https://gist.github.com/180fc262d41a19eb389d></div>
+
+### Lessons Learned
+- Pairing is great because you've got two people thinking of potential solutions to a problem. Sometimes one works and one doesn't, sometimes they both work, or neither work. But there are multiple ways to solve a problem so it's nice to hear all the different solutions.
+
+### The Good
+- __Pseudo Code:__ It is super important to think through the problem and decide on how you want to solve it. From there the coding part is easy. But writing pseudo code really helps you figure out how you want to structure your code. It allows you to think through each step on how you want to solve the problem and break it down into more manageable pieces.
+
+### The Bad
+- You are only as good as the tools you use. It's sort of a chicken and egg problem. You need to understand all the different types of Ruby methods do solve a problem well. But you shouldn't rely on knowing all the different Ruby methods and syntax, you should focus on thinking logically like a computer, step by step. There's a finite number of themes that are used, get to know them and practice them.
+
+### The Ugly
+- Algorithms are easy to write. Don't try to write a perfect algorithm. Write out how you want to solve it and then re-factor.
+- It's okay to write ugly code sometimes. Use that as pseudo code to get your thoughts down, then think about it with a different approach.
+
+#### Day 1
+
+Favorite Challenge -
+
+```
+def squared_primes(array)
+  array.find_all{|x| (2..x-1).select(){|i| x % i == 0 }.count == 0 }.map{|p| p*p}
+end
+```
+
+What this code does: It takes an array of numbers. Then finds all the prime numbers within that array and returns an array of these prime numbers squared.
+
+The goal of this exercise was to take a convoluted line of code and re-factor it for clarity.
+
+I found that there were 2 major steps occurring within this convoluted method.
+ - Finding the prime numbers within the Array.
+ - Squaring the prime numbers.
+
+To find out if a number is prime, you can find all the factors of the number. If there are only 2 factors, then the number is prime otherwise it's not a prime number.
+
+All the prime numbers are put into an array and then squared.
+
+Re-factored code:
+
+def squared_primes(array)
+  prime_numbers = []
+  array.each do |number|
+    prime_numbers << number if is_prime?(number)
+  end
+  prime_numbers.map{ |p| p*p }
+end
+
+def is_prime?(n)
+  factors(n).count > 2 ? false : true
+end
+
+def factors(n)
+  factors = []
+  (1..n).each { |d| factors << d if (n%d == 0 ) }
+  factors
+end
+
+#### Day 2
+
+Favorite Challenge - Pig Latin
+
+The goal of this challenge was to take a sentence and return it in Pig Latin. This meant that all the constants before the first vowel was pushed to the end of the word and "ay" was added to the back.
+
+Our approach was to find the index of the first vowel. This gave us the ability to split the word up into two parts, the first part was the leading constants and the second part had the rest of the word with the leading vowel. Lastly "ay" was added to the end of the word to make it Pig Latin.
+
+I liked how after we figured out how to make each word into pig latin, we just had to breaking up the sentence into an array with each word. Then passing each word through our first method.
+
+Our Code:
+
+def piglatin(word)
+  position = word.index(/[aeiou]/)
+  if position == 0
+    return word
+  else
+    constants = word[0..(position - 1)]
+    rest_word = word[position..-1]
+    piglatin_word = rest_word + const + "ay"
+  end
+piglatin_word
+end
+
+def piglatinsentence(sentence)
+  array_of_words = sentence.split
+  array_of_mod   = []
+  array_of_words.each do |word|
+    array_of_mod << piglatin(word)
+  end
+  piglatin_sentence = array_of_mod.join(' ')
+piglatin_sentence
+end
+
+
+During this drill, we first wrote out the pseudo code like a to-do list. This really helped break down the each step. It was a big hard to think in code right away because we weren't sure of what built in Ruby methods were available, but once we found the String#index method, everything was super simple. Love it when the tools help guide you to the solution.
+
+#### Day 3
+
+Algorithm is definitely one of the weaknesses not. I find it one of the most interesting though, perhaps because it's just so much more complex. It was neat that we got to write two different solutions, iterative and recursive, for almost every challenge. Just show how you can do everything in multiple ways.
+
+Recursive is a lot harder to get my head around because I'm having trouble remember what gets returned and then using that to feedback to the last problem.
+
+One of the more confusing challenges today was the Fibonacci Sequence. When doing it iteratively, you are moving towards your final number by building up. Recursively though, you are setting up all the formulas from your starting number and then getting the solution and adding backwards.
+
+It's interesting how recursively, you are passing through new parameters to your method by doing the same thing over and over again until you get to your base case. Then the return value is passed back.
+
+Iteratively, you are changing your variable and building on it.
+
+Here were our solutions:
+
+Fibonacci Sequence
+
+def fibonacci_iterative(n)
+  return 0 if n == 1
+  total = 1
+  second_to_last = 0
+  last = 1
+  (n-1).times do
+    total = second_to_last + last
+    second_to_last = last
+    last = total
+  end
+  total
+end
+
+def fibonacci_recursive(n)
+  return 0 if n == 0
+  return 1 if n == 1
+  fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
+end
+
+#### Day 4
+
+This day was especially hard. The challenge was build a Ruby Racer, where two players would move across the screen based on the roll of a dice. The board would print each time a player moves. When one player has reached the end, a winner would be declared and the final board would be print.
+
+I wished we pseudo code and discussed this puzzle more. This was our final solution after I refactored it a little. After looking through how other people did it, I realized that a better solution would have been to use a hash instead of an array to keep track of the player and their currently location.
+
+require_relative 'racer_utils.rb'
+
+class RubyRacer
+  attr_reader :players, :length
+
+  def initialize(players, length = 30)
+    @die = Die.new
+    @players = players
+    @length = length
+    @board = Array.new(@players.size){ Array.new(@length){ "_" } }
+    @position_a = 0
+    @position_b = 0
+  end
+
+  def finished?
+    if ( @position_a >= @length || @position_b >= @length)
+      true
+    else
+      false
+    end
+  end
+
+  def winner
+    if @position_a == @length - 1
+      return 'A'
+    else @position_b == @length - 1
+      return 'B'
+    end
+  end
+
+  def advance_player!(player)
+    if player == "a"
+      @board[0][@position_a] = "_"
+      @position_a = [(@position_a + @die.roll), @length].min
+      @board[0][@position_a] = "a"
+    elsif player == "b"
+      @board[1][@position_b] = "_"
+      @position_b = [(@position_b + @die.roll), @length].min
+      @board[1][@position_b] = "b"
+    end
+  end
+
+  def print_board
+    reputs(@board[0].join + "\n" + @board[1].join)
+  end
+
+end
+
+@players = ['a', 'b']
+
+game = RubyRacer.new(@players)
+
+clear_screen!
+
+until game.finished?
+  @players.each do |player|
+
+move_to_home!
+
+game.print_board
+
+game.advance_player!(player)
+sleep(0.4)
+end
+
+end
+
+clear_screen!
+game.print_board
+
+puts "Player '#{game.winner}' has won!"

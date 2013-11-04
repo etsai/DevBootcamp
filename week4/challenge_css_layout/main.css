@@ -1,0 +1,118 @@
+html {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
+  height: 60px;
+}
+
+header a{
+    color: white;
+    text-decoration: none;
+}
+
+header {
+  padding: 10px;
+  background-color: black;
+}
+
+header a{
+  text-decoration: none;
+  color: white;
+}
+
+a {
+    font-weight: bold;
+}
+.brand {
+    float: left;
+}
+
+nav {
+    float: right;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: inline;
+    padding-right: 30px;
+}
+
+.brand {
+  font-family: "Lato", Verdana, sans-serif;
+  font-size: 3em;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #ff0;
+}
+
+
+.features {
+    -webkit-column-count:3;
+    -webkit-column-rule:3px outset #333;
+    -webkit-column-gap:40px;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.marketing {
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;  background-color: #555;
+  color: white;
+
+
+h3 {
+    margin-top: 0px;
+}
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+}  background: #555;
+}
+
+.marketing p {
+    color: white;
+}
+
+
+ul {
+    list-style:none;
+    float: right;
+    display: inline;
+    padding: 0;
+}
+
+li {
+     display: inline;
+}
+
+.features{
+    -webkit-column-count:3;
+}
+
+
+.features div{
+    display: inline;
+}
+
+h2 {
+    color: white;
+}
+
+footer {
+    background-color: black;
+    color: white;
+}

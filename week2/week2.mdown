@@ -1,0 +1,28 @@
+# End Week 2 Reflection
+
+### The Good
+- This week was focused on Object Oriented Programming and Design. I found this to be so much more fun and was able to understand the concepts as well as overall picture much better as well. We got to build some really neat almost fully functioning apps like a ToDo list. It was awesome to see all the different pieces come together. I love moving around moving pieces.
+
+### The Bad
+- I have a hard time keeping all the different pieces in my head. For example with recursions, I always forget what gets returned and will be added to the next recursion. It's like I have a memory span of like... 2 items. Definitely something I'll need to work on. Luckily with OOP, the goal is to break it down and work with all the little pieces which is much easier for my brain.
+- It's fun to filter out what you don't need, but it's hard to not think about the additional features. It's better to say no so you can first create something small.
+
+### The Ugly
+- I had to learn it the hard way how the best thing to do when you are frustrated is to just walk away. And don't sweat the small stuff. Stick with the MVP and iterate.
+
+### Lessons Learned
+- The goal of object oriented programming is to break things down into bite size pieces and piece them together like a puzzle. It's like your building your own tools and objects! Then using it to build more tools and objects until your final product. This is the kind of stuff I really enjoy.
+- Side Story: Like how when I was little I enjoyed gathering raw material to make something that would then be used for something else.
+- Breaking things down and having those debates about the exact step by step process, the data structure being used, and what the specific objects are really makes things easier when you code. This is the key for clear communication.
+- I had some really productive one on one sessions this week which was really nice. A key concept that I started to wrap my head around was that when you create a class, you are just creating the model for it. You are not actually creating a specific object, but you are creating the model which is an object. So you must also create an instance of the class to create the specific object. If you don't, then your just working with the model.
+- Another key concept was how you can call methods within other methods. In fact this is actually something you'll want to do. This means that you can also call methods within your initialize method (when you first create the object of the class). Which also means that you can take any data input make changes to it, then initialize with those changes.
+- You can also create a class within a class. Now this blew my mind. But it's starting to make sense, you have a cards class and a deck of cards class. So you'll want to create the cards object within your deck object. The same could go for each individual page and a book. (Don't we love analogies.)
+
+
+#### Favorite Challenge
+
+My favorite challenge of this week was to build a flashcards game that you could play inside the terminal. This was a group project, where we got to split up all the different parts of the app and work on them with our pairs. Then piece it together for the final app. What worked out really well was that we discussed for a really long time all the different pieces that we needed as a group so when we were writing the code it was easy to know what the results the other pair was depending on.
+
+Here's was the result:
+https://github.com/alexfiore/flash_cards
+

@@ -1,0 +1,212 @@
+# This is how you define your own custom exception classes
+class NoFruitError < StandardError
+end
+
+class FruitTree
+  attr_reader :age, :height, :fruit
+
+  YEAR = 1
+
+  def initialize(age=0, height=0)
+    @age = age
+    @fruit = []
+    @height = height
+  end
+
+  def any_fruit?
+    return true if @fruit.count > 0
+  end
+
+  def average(basket)
+    sum=0
+    basket.each {|fruit| sum+= fruit.diameter}
+    sum/basket.count
+  end
+
+  def pick_a_fruit!
+    raise NoFruitError, "This tree has no fruit" unless self.any_fruit?
+    # orange-picking logic goes here
+    @fruit.pop
+  end
+
+  def dead?(max_age)
+    @age > max_age ? true : false
+  end
+
+  def age!
+    @age += YEAR
+    increase_height
+    grow_fruit
+  end
+
+end
+
+class AppleTree < FruitTree
+
+  MAX_AGE = 13
+
+  def increase_height
+    @height += 10 unless height > 100 || @age > 13
+  end
+
+  def grow_fruit
+    if @age > 1 && @age < 13
+      @age.times {@fruit << Apple.new }
+    end
+  end
+
+ def dead?
+   super(MAX_AGE)
+ end
+
+end
+
+
+class OrangeTree < FruitTree
+
+  MAX_AGE = 18
+
+  def increase_height
+    @height += 10 unless height > 100 || @age > 15
+  end
+
+  def grow_fruit
+    if @age > 2 && @age < 18
+     (@age/2).times {@fruit << Orange.new }
+    end
+  end
+
+  def dead?
+    super(MAX_AGE)
+  end
+
+end
+
+class PearTree < FruitTree
+
+  MAX_AGE = 10
+
+  def increase_height
+    @height += 10 unless height > 50 || @age > 5
+  end
+
+  def grow_fruit
+    if @age > 1 && @age < 8
+     (@age*2).times {@fruit << Pear.new }
+    end
+  end
+
+end
+
+class Fruit
+
+  attr_reader :diameter
+
+  def initialize(max_diameter)
+    @diameter = 1 + rand(max_diameter)
+  end
+
+end
+
+class Apple < Fruit
+
+  def initialize
+    super(6)
+  end
+
+end
+
+class Orange < Fruit
+
+  def initialize
+    super(10)
+  end
+
+end
+
+class Pear < Fruit
+
+  def initialize
+    super(8)
+  end
+
+end
+
+class TreeGrove
+  def initialize(array)
+  end
+
+end
+
+
+my_grove = TreeGrove([])
+
+# my_tree = AppleTree.new
+# my_tree.age! until my_tree.any_fruit?
+
+# p my_tree
+
+# p my_tree.dead?
+
+
+
+# apple_tree = AppleTree.new
+
+# apple_tree.age! until apple_tree.any_fruit?
+
+# puts "Tree is #{apple_tree.age} years old and #{apple_tree.height} feet tall"
+
+# until apple_tree.dead?
+#   basket = []
+
+#   # It places the oranges in the basket
+#   # IT PLACES THE ORANGES IN THE BASKET
+#   while apple_tree.any_fruit?
+#     basket << apple_tree.pick_a_fruit!
+#   end
+
+#   avg_diameter = apple_tree.average(basket) if basket.count > 0
+#   # It's up to you to calculate the average diameter for this harvest.
+
+#   puts "Year #{apple_tree.age} Report"
+#   puts "Tree height: #{apple_tree.height} feet"
+#   puts "Harvest:     #{basket.size} apples with an average diameter of #{avg_diameter} inches"
+#   puts ""
+
+#   # Age the apple_tree another year
+#   apple_tree.age!
+# end
+
+# p apple_tree
+
+
+# puts "Alas, the apple tree, she is dead!"
+
+# orange_tree = OrangeTree.new
+
+# orange_tree.age! until orange_tree.any_fruit?
+
+# puts "Tree is #{orange_tree.age} years old and #{orange_tree.height} feet tall"
+
+# until orange_tree.dead?
+#   basket = []
+
+#   # It places the oranges in the basket
+#   # IT PLACES THE ORANGES IN THE BASKET
+#   while orange_tree.any_fruit?
+#     basket << orange_tree.pick_a_fruit!
+#   end
+
+# avg_diameter = orange_tree.average(basket) if basket.count > 0
+#   # It's up to you to calculate the average diameter for this harvest.
+
+#   puts "Year #{orange_tree.age} Report"
+#   puts "Tree height: #{orange_tree.height} feet"
+#   puts "Harvest:     #{basket.size} oranges with an average diameter of #{avg_diameter} inches"
+#   puts ""
+
+#   # Age the orange_tree another year
+#   orange_tree.age!
+# end
+
+# puts "Alas, the orange_tree, she is dead!"

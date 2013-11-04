@@ -1,0 +1,62 @@
+body {
+    padding-left: 162px;
+}
+    
+.container {
+  /*
+    If you have a block-level element of a certain width, margin: 0 auto;
+    will how you center it inside its parent container.
+
+    See: http://bluerobot.com/web/css/center1.html
+
+    Don't change the container width.
+
+    The sidebar has a light gray background with a slightly darker
+    gray border on the right side with a width of 2px.
+    Each link in the menu has a pleasing amount of spacing surrounding it.
+    text-decoration: he menu links are black and will turn gray when the user hovers over them.
+    The menu links are separated by a thin, light gray border.
+    Even thought the sidebar now takes up 150px of space on the window,
+    notice that the content area is centered within the whitespace,
+    not centered within the full width of the browser window.
+    This part may be a little tricky for you to figure out, so here's a hint:
+    you can use the padding property of an element to increase its overall width.
+  */
+  margin: 0 auto;
+  width: 720px;
+}
+
+
+nav {
+  border-right: 2px solid #575757;
+  background-color: #bdbdbd;
+  position: fixed;
+  width: 150px;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+  border: 2px solid #808080;
+  list-style: none;
+  line-height: 250%;
+  padding-left: 15px;
+
+}
+
+a {
+    font-size: 24px;
+    text-decoration: none;
+    color: gray;
+}
+
+.content {
+  display: block;
+  width: 100%;
+}

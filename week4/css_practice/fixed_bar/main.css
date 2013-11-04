@@ -1,0 +1,59 @@
+.top-nav {
+    background-color: black;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    height: 64px;
+}
+
+.top-nav h1 {
+    font-size: 32px;
+    display: inline-block;
+    color: white;
+cal-align: middle;
+    float: left;
+}
+
+.nav {
+    padding-left: 60;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.navlist-style: none;
+    display: inline;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    margin: 0px auto;
+    width: 400px;
+}
+
+.content {
+    padding-top: 64px;
+}
+
+p {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 8px;
+}
+
+h1, h2, h3 {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 48px;
+}
